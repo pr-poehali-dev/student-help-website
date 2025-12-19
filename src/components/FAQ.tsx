@@ -1,9 +1,4 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import SimpleAccordion from "@/components/SimpleAccordion";
 
 const faqItems = [
   {
@@ -53,22 +48,7 @@ const FAQ = () => {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqItems.map((item, index) => (
-            <AccordionItem 
-              key={index} 
-              value={`item-${index}`}
-              className="bg-card border rounded-lg px-6"
-            >
-              <AccordionTrigger className="text-left font-semibold hover:text-primary">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <SimpleAccordion items={faqItems} />
       </div>
     </section>
   );

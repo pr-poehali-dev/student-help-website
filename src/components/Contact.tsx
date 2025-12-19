@@ -3,13 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import SimpleSelect from "@/components/SimpleSelect";
 import Icon from "@/components/ui/icon";
 import { useToast } from "@/hooks/use-toast";
 
@@ -107,23 +101,20 @@ const Contact = () => {
                   <label className="block text-sm font-medium mb-2">
                     Тип услуги <span className="text-destructive">*</span>
                   </label>
-                  <Select
+                  <SimpleSelect
                     value={formData.service}
-                    onValueChange={(value) => setFormData({ ...formData, service: value })}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Выберите услугу" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="coursework">Курсовая работа</SelectItem>
-                      <SelectItem value="diploma">Дипломная работа</SelectItem>
-                      <SelectItem value="test">Контрольная работа</SelectItem>
-                      <SelectItem value="essay">Реферат/Эссе</SelectItem>
-                      <SelectItem value="lab">Лабораторная работа</SelectItem>
-                      <SelectItem value="practice">Практика/Отчет</SelectItem>
-                      <SelectItem value="other">Другое</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    onChange={(value) => setFormData({ ...formData, service: value })}
+                    placeholder="Выберите услугу"
+                    options={[
+                      { value: "coursework", label: "Курсовая работа" },
+                      { value: "diploma", label: "Дипломная работа" },
+                      { value: "test", label: "Контрольная работа" },
+                      { value: "essay", label: "Реферат/Эссе" },
+                      { value: "lab", label: "Лабораторная работа" },
+                      { value: "practice", label: "Практика/Отчет" },
+                      { value: "other", label: "Другое" }
+                    ]}
+                  />
                 </div>
 
                 <div>
